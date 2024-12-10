@@ -26,14 +26,20 @@ function playerLoss() {
   computerScore++;
 }
 
-function roundEnd() {
+function playerDraw() {
+  console.log("A draw!");
+}
+
+function endRound() {
+  roundNumber++;
   if (roundNumber <= 4) {
     return;
   } else if (playerScore === computerScore) {
     console.log(`It's a draw. We both scored ${playerScore}`);
   } else {
+    let winner = playerScore > computerScore ? "You" : "I";
     console.log(
-      `I win. ${roundNumber - playerScore} is lower than ${playerScore}`
+      `${winner} win with ${winner === "you" ? playerScore : computerScore}!`
     );
   }
 }
@@ -49,18 +55,32 @@ function calculateWinner(playerChoice, computerChoice) {
   return computerChoice === "rock" ? "computer" : "player";
 }
 
-let playerChoicex = playerChoice();
-let computerChoicex = computerChoice();
-console.log(playerChoicex);
-console.log(computerChoicex);
-console.log(calculateWinner(playerChoicex, computerChoicex));
+function calculateScore(roundWinnerResult) {
+  if (roundWinnerResult === "draw") {
+    playerDraw();
+    return;
+  }
+  roundWinnerResult === "player" ? playerWin() : playerLoss();
+}
 
-// let playerScore = 0;
-// let computerScore = 0;
-// let roundNumber = 0;
+function isPlayerChoiceValid(choice) {
+  if (choice === "rock" || choice === "paper" || choice === "scissors") {
+    return true;
+  }
+  return false;
+}
 
-// while (roundNumber < 5) {
-//   roundNumber++;
-//   playerChoice();
-//   computerChoice();
-// }
+let playerScore = 0;
+let computerScore = 0;
+let roundNumber = 0;
+
+while (roundNumber < 5) {
+  let playersChoice = playerChoice();
+  if (!isPlayerChoiceValid) {
+    alert("You didn't select 'Rock', 'Paper', or 'Scissors'. Try again");
+  }
+  let computersChoice = computerChoice();
+  let roundWinner = calculateWinner(playersChoice, computersChoice);
+  calculateScore(roundWinner);
+  endRound();
+}
