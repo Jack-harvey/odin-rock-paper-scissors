@@ -39,7 +39,7 @@ function endRound() {
   } else {
     let winner = playerScore > computerScore ? "You" : "I";
     console.log(
-      `${winner} win with ${winner === "you" ? playerScore : computerScore}!`
+      `${winner} win with ${winner === "You" ? playerScore : computerScore}!`
     );
   }
 }
@@ -76,8 +76,9 @@ let roundNumber = 0;
 
 while (roundNumber < 5) {
   let playersChoice = playerChoice();
-  if (!isPlayerChoiceValid) {
+  if (!isPlayerChoiceValid(playersChoice)) {
     alert("You didn't select 'Rock', 'Paper', or 'Scissors'. Try again");
+    continue;
   }
   let computersChoice = computerChoice();
   let roundWinner = calculateWinner(playersChoice, computersChoice);
