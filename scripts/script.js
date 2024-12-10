@@ -36,11 +36,13 @@ function endRound() {
     return;
   } else if (playerScore === computerScore) {
     console.log(`It's a draw. We both scored ${playerScore}`);
+    return;
   } else {
     let winner = playerScore > computerScore ? "You" : "I";
     console.log(
       `${winner} win with ${winner === "You" ? playerScore : computerScore}!`
     );
+    return;
   }
 }
 
