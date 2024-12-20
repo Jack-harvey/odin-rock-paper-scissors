@@ -5,31 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors!</title>
     <script src="scripts/script.js"></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="scoreBar">
-      <div id="consoleName"></div>
-      <div id="Score"></div>
-      <div id="playerName"></div>
-    </div>
-    <div id="gameContent">
-      <div id="consoleContent"></div>
-      <div id="rps">
-        <div id="rock">
-          <img />
-          <span></span>
+    <div class="content">
+      <div id="scoreBar">
+        <div id="consoleName" class="player-names">console</div>
+        <div id="score">5 - 5</div>
+        <div id="playerName" class="player-names">jack</div>
+      </div>
+      <div id="gameContent">
+        <div id="consoleContent">
+          <img id="consolePicture" src="img/scissors.png" />
+          <div id="consoleVoice">You're gonna lose now bucko!</div>
         </div>
-        <div id="paper">
-          <img />
-          <span></span>
-        </div>
-        <div id="scissors">
-          <img />
-          <span></span>
+        <div id="rps">
+          <div id="rock" class="choice">
+            <img src="img/rock.png" />
+            <span>Rock</span>
+          </div>
+          <div id="paper" class="choice">
+            <img src="img/paper.png" />
+            <span>Paper</span>
+          </div>
+          <div id="scissors" class="choice">
+            <img src="img/scissors.png" />
+            <span>Scissors</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div id="footer"></div>
+      <div id="footer"><div>copyright me</div></div>
+    </div>
   </body>
 </html>

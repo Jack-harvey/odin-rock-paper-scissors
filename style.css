@@ -1,0 +1,86 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+img {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.content {
+  height: 100vh;
+  width: 960px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#scoreBar {
+  background-color: blue;
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  align-items: center;
+  font-size: 35px;
+}
+
+#score {
+  width: 150px;
+  text-align: center;
+}
+
+.player-names {
+  margin: 0px 30px;
+}
+
+#gameContent {
+  background-color: darkslategrey;
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#consoleContent {
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
+}
+
+#consoleVoice {
+  text-align: center;
+  text-wrap: wrap;
+  max-width: 300px;
+}
+
+#rps {
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
+  gap: 10px;
+}
+
+.choice {
+  display: flex;
+  flex-direction: column;
+}
+
+.choice span {
+  text-align: center;
+  margin-top: 10px;
+}
+
+#footer {
+  background-color: brown;
+  height: 75px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

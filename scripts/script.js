@@ -72,18 +72,31 @@ function isPlayerChoiceValid(choice) {
   return false;
 }
 
+function setScoreBoard(consoleScore, playerScore) {}
+
 let playerScore = 0;
 let computerScore = 0;
 let roundNumber = 0;
 
-while (roundNumber < 5) {
-  let playersChoice = playerChoice();
-  if (!isPlayerChoiceValid(playersChoice)) {
-    alert("You didn't select 'Rock', 'Paper', or 'Scissors'. Try again");
-    continue;
-  }
-  let computersChoice = computerChoice();
-  let roundWinner = calculateWinner(playersChoice, computersChoice);
-  calculateScore(roundWinner);
-  endRound();
-}
+document.addEventListener("DOMContentLoaded", () => {
+  // while (roundNumber < 5) {
+  // let playersChoice = playerChoice();
+  // if (!isPlayerChoiceValid(playersChoice)) {
+  //   alert("You didn't select 'Rock', 'Paper', or 'Scissors'. Try again");
+  //   continue;
+  // }
+  // let computersChoice = computerChoice();
+  // let roundWinner = calculateWinner(playersChoice, computersChoice);
+  // calculateScore(roundWinner);
+  // endRound();
+
+  const buttonPlayerChoiceArea = document.querySelector("#rps");
+
+  buttonPlayerChoiceArea.addEventListener("click", (event) => {
+    let playersChoice = event.target.closest(".choice").id;
+    let computersChoice = computerChoice();
+    let roundWinner = calculateWinner(playersChoice, computersChoice);
+    calculateScore(roundWinner);
+    endRound();
+  });
+});
