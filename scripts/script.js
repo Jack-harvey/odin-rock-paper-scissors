@@ -39,11 +39,13 @@ function calculateScore(roundWinnerResult) {
 function playerWin() {
   consoleSpeaks("Congrats, this round is yours!");
   playerScore++;
+  setScoreBoard();
 }
 
 function playerLoss() {
   consoleSpeaks("That's a point to me, the console!");
   computerScore++;
+  setScoreBoard();
 }
 
 function playerDraw() {
@@ -71,16 +73,34 @@ function consoleSpeaks(quote) {
   consoleVoice.textContent = quote;
 }
 
-function setScoreBoard(consoleScore, playerScore) {}
+function setScoreBoard() {
+  const scoreBoard = document.querySelector("#score");
+  scoreBoard.textContent = `${computerScore} - ${playerScore}`;
+}
+
+function getPlayerName() {
+  const name = prompt("Who dares come at me?");
+  if (name) {
+    return name;
+  }
+  consoleSpeaks("Not going to tell me, fine. I'll beat you anyway");
+  return "the nameless";
+}
+
+function setPlayerName(name) {
+  const scoreBoardName = document.querySelector("#playerName");
+  scoreBoardName.textContent = name;
+}
 
 let playerScore = 0;
 let computerScore = 0;
 let roundNumber = 0;
 
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
   const buttonPlayerChoiceArea = document.querySelector("#rps");
 
-  const playerName = prompt("Who dares come at me?");
+  const playerName = getPlayerName();
+  setPlayerName(playerName);
 
   buttonPlayerChoiceArea.addEventListener("click", (event) => {
     playerMakesMove(event);
