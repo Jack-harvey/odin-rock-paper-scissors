@@ -51,12 +51,13 @@ img {
   display: flex;
   margin-top: 50px;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 #consoleVoice {
   text-align: center;
   text-wrap: wrap;
-  max-width: 300px;
+  flex: 0 0 300px;
 }
 
 #rps {
