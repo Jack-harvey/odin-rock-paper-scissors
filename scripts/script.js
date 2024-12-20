@@ -1,3 +1,11 @@
+function playerMakesMove(choice) {
+  let playersChoice = choice.target.closest(".choice").id;
+  let computersChoice = computerChoice();
+  let roundWinner = calculateWinner(playersChoice, computersChoice);
+  calculateScore(roundWinner);
+  endRound();
+}
+
 function computerChoice() {
   let randomNumberFrom1To99 = Math.floor(Math.random() * 100 + 1);
   if (randomNumberFrom1To99 <= 33) {
@@ -6,43 +14,6 @@ function computerChoice() {
     return "paper";
   } else {
     return "scissors";
-  }
-}
-
-function playerChoice() {
-  let playerChoice = prompt(
-    "It's time to throw down against me, the console. You've got to pick 'Rock', 'Paper', or 'Scissors'. May the best console win."
-  );
-  return playerChoice.toLowerCase();
-}
-
-function playerWin() {
-  console.log("Congrats, this round is yours!");
-  playerScore++;
-}
-
-function playerLoss() {
-  console.log("That's a point to me, the console!");
-  computerScore++;
-}
-
-function playerDraw() {
-  console.log("A draw!");
-}
-
-function endRound() {
-  roundNumber++;
-  if (roundNumber <= 4) {
-    return;
-  } else if (playerScore === computerScore) {
-    console.log(`It's a draw. We both scored ${playerScore}`);
-    return;
-  } else {
-    let winner = playerScore > computerScore ? "You" : "I";
-    console.log(
-      `${winner} win with ${winner === "You" ? playerScore : computerScore}!`
-    );
-    return;
   }
 }
 
@@ -65,11 +36,39 @@ function calculateScore(roundWinnerResult) {
   roundWinnerResult === "player" ? playerWin() : playerLoss();
 }
 
-function isPlayerChoiceValid(choice) {
-  if (choice === "rock" || choice === "paper" || choice === "scissors") {
-    return true;
+function playerWin() {
+  consoleSpeaks("Congrats, this round is yours!");
+  playerScore++;
+}
+
+function playerLoss() {
+  consoleSpeaks("That's a point to me, the console!");
+  computerScore++;
+}
+
+function playerDraw() {
+  consoleSpeaks("A draw!");
+}
+
+function endRound() {
+  roundNumber++;
+  if (roundNumber <= 4) {
+    return;
+  } else if (playerScore === computerScore) {
+    consoleSpeaks(`It's a draw. We both scored ${playerScore}`);
+    return;
+  } else {
+    let winner = playerScore > computerScore ? "You" : "I";
+    consoleSpeaks(
+      `${winner} win with ${winner === "You" ? playerScore : computerScore}!`
+    );
+    return;
   }
-  return false;
+}
+
+function consoleSpeaks(quote) {
+  const consoleVoice = document.querySelector("#consoleVoice");
+  consoleVoice.textContent = quote;
 }
 
 function setScoreBoard(consoleScore, playerScore) {}
@@ -79,15 +78,11 @@ let computerScore = 0;
 let roundNumber = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
-  const playerName = prompt("Who dares come at me?");
-
   const buttonPlayerChoiceArea = document.querySelector("#rps");
 
+  const playerName = prompt("Who dares come at me?");
+
   buttonPlayerChoiceArea.addEventListener("click", (event) => {
-    let playersChoice = event.target.closest(".choice").id;
-    let computersChoice = computerChoice();
-    let roundWinner = calculateWinner(playersChoice, computersChoice);
-    calculateScore(roundWinner);
-    endRound();
+    playerMakesMove(event);
   });
 });
