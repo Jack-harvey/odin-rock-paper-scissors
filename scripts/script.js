@@ -1,4 +1,8 @@
 function playerMakesMove(choice) {
+  if (playerScore >= 5 || computerScore >= 5) {
+    consoleSpeaks("refresh to play again!");
+    return;
+  }
   let playersChoice = choice.target.closest(".choice").id;
   let computersChoice = computerChoice();
   let roundWinner = calculateWinner(playersChoice, computersChoice);
@@ -53,8 +57,7 @@ function playerDraw() {
 }
 
 function endRound() {
-  roundNumber++;
-  if (roundNumber <= 4) {
+  if (playerScore <= 4 && computerScore <= 4) {
     return;
   } else if (playerScore === computerScore) {
     consoleSpeaks(`It's a draw. We both scored ${playerScore}`);
@@ -94,11 +97,9 @@ function setPlayerName(name) {
 
 let playerScore = 0;
 let computerScore = 0;
-let roundNumber = 0;
 
 window.addEventListener("load", () => {
   const buttonPlayerChoiceArea = document.querySelector("#rps");
-
   const playerName = getPlayerName();
   setPlayerName(playerName);
 
