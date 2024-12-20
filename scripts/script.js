@@ -79,16 +79,7 @@ let computerScore = 0;
 let roundNumber = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
-  // while (roundNumber < 5) {
-  // let playersChoice = playerChoice();
-  // if (!isPlayerChoiceValid(playersChoice)) {
-  //   alert("You didn't select 'Rock', 'Paper', or 'Scissors'. Try again");
-  //   continue;
-  // }
-  // let computersChoice = computerChoice();
-  // let roundWinner = calculateWinner(playersChoice, computersChoice);
-  // calculateScore(roundWinner);
-  // endRound();
+  const playerName = prompt("Who dares come at me?");
 
   const buttonPlayerChoiceArea = document.querySelector("#rps");
 
